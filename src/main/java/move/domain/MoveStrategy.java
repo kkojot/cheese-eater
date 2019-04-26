@@ -42,7 +42,8 @@ public abstract class MoveStrategy {
         } else {
             path = moveVertically(startPoint, new Point(endPoint.row, startPoint.column), path);
             startPoint = path.last();
-            path = moveHorizontally(startPoint, endPoint, path);
+            if (!startPoint.equals(endPoint))
+                path = moveHorizontally(startPoint, endPoint, path);
         }
         return path.distinct();
     }
